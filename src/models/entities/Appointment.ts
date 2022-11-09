@@ -4,13 +4,14 @@ import { checkValidityDateTime } from './../../utils/date_utils';
 
 export class Appointment extends Entity {
     private _specialty: AppointmentSpecialtyType = 'biópsia';
-    private _doctorName?: string;
+    private _doctorName: string = '';
     private _dateTime: Date = new Date();
     private _idBeneficiary: number = NaN;
 
-    constructor(specialty: AppointmentSpecialtyType, dateTime: Date, idBeneficiary: number) {
+    constructor(specialty: AppointmentSpecialtyType, doctorName: string, dateTime: Date, idBeneficiary: number) {
         super();
         this.specialty = specialty;
+        this.doctorName = doctorName;
         this.dateTime = dateTime;
         this.idBeneficiary = idBeneficiary;
     }
@@ -27,11 +28,11 @@ export class Appointment extends Entity {
         this._specialty = value;
     }
 
-    public get doctorName(): string | undefined {
+    public get doctorName(): string {
         return this._doctorName;
     }
 
-    public set doctorName(value: string | undefined) {
+    public set doctorName(value: string) {
         this._doctorName = value;
     }
 

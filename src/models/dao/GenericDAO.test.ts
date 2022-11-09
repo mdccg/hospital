@@ -39,8 +39,7 @@ describe(`Tests over appointment's table`, () => {
         const beneficiaries = await beneficiaryDAO.findAll();
         const nextWeek = new Date();
         nextWeek.setDate(nextWeek.getDate() + 7);
-        const appointment = new Appointment('biópsia', nextWeek, beneficiaries[0].id as number);
-        appointment.doctorName = 'Doctor Sidney';
+        const appointment = new Appointment('biópsia', 'Doctor Sidney', nextWeek, beneficiaries[0].id as number);
         const appointmentDAO = new GenericDAO(Appointment);
         await appointmentDAO.save(appointment);
         const appointments = await appointmentDAO.findAll();
@@ -53,13 +52,13 @@ describe(`Tests over appointment's table`, () => {
 
     it('should not save a new appointment with an invalid specialty', () => {
         expect(() => {
-            const appointment = new Appointment('none' as AppointmentSpecialtyType, new Date(), NaN);
+            const appointment = new Appointment('none' as AppointmentSpecialtyType, 'Doctor Sidney', new Date(), NaN);
         }).toThrowError('Invalid specialty.');
     });
     
     it('should not save a new appointment with a date and time earlier than the current instant', () => {
         expect(() => {
-            const appointment = new Appointment('biópsia', new Date(2001, 10, 27), NaN);
+            const appointment = new Appointment('biópsia', 'Doctor Sidney', new Date(2001, 10, 27), NaN);
         }).toThrowError('Invalid date time.');
     });
 });

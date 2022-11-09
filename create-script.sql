@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS "beneficiary" (
 CREATE TABLE IF NOT EXISTS "appointment" (
     "id" SERIAL PRIMARY KEY,
     "specialty" VARCHAR NOT NULL,
-    "responsibleProfessional" VARCHAR NOT NULL,
+    "doctorName" VARCHAR NOT NULL,
     "dateTime" TIMESTAMP NOT NULL,
     "idBeneficiary" INTEGER REFERENCES "beneficiary" ("id")
 );

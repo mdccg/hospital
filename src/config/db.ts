@@ -26,7 +26,7 @@ export const createTables = async () => {
         await client.query(`CREATE TABLE IF NOT EXISTS "appointment" (
             "id" SERIAL PRIMARY KEY,
             "specialty" VARCHAR NOT NULL,
-            "doctorName" VARCHAR,
+            "doctorName" VARCHAR NOT NULL,
             "dateTime" TIMESTAMP NOT NULL,
             "idBeneficiary" INTEGER REFERENCES "beneficiary" ("id")
         );`);

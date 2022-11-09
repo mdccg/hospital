@@ -1,0 +1,1 @@
+export type ExamSpecialtyType = 'biópsia' | 'ultrassom' | 'refração' | 'radiografia oclusa';

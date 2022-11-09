@@ -1,0 +1,1 @@
+export type AppointmentSpecialtyType = 'biópsia' | 'ultrassom' | 'refração' | 'radiografia oclusal';
